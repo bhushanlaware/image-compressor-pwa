@@ -16,11 +16,13 @@ import {
 import React, { useEffect, useState } from "react";
 
 import DeleteIcon from "@material-ui/icons/Delete";
-import DownloadIcon from "@material-ui/icons/ArrowDownwardRounded";
+import DownArrowIcon from "@material-ui/icons/ArrowDownwardRounded";
 import ImageCompare from "./ImageCompare";
 import LoadingScreen from "./LoadingScreen";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import PropTypes from "prop-types";
+import SaveIcon from "@material-ui/icons/Save";
+import UpArrowIcon from "@material-ui/icons/ArrowUpwardRounded";
 import bytesToSize from "../utils/bytesToSize";
 import clsx from "clsx";
 import fileCompressor from "../utils/fileCompressor";
@@ -34,6 +36,14 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.up("md")]: {
       textAlign: "left",
+    },
+  },
+  iconGroup: {
+    [theme.breakpoints.down("sm")]: {
+      textAlign: "center",
+    },
+    [theme.breakpoints.up("md")]: {
+      textAlign: "right",
     },
   },
   dropZone: {
@@ -146,7 +156,46 @@ function FilesDropzone({
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop: handleDrop,
   });
-
+  const goUp = (i) => {
+    setFiles((prevFiles) => {
+      const newArr = [...prevFiles];
+      if (i - 1 >= 0) {
+        const temp = newArr[i - 1];
+        newArr[i - 1] = newArr[i];
+        newArr[i] = temp;
+      }
+      return newArr;
+    });
+    setOriginalFiles((prevFiles) => {
+      const newArr = [...prevFiles];
+      if (i - 1 >= 0) {
+        const temp = newArr[i - 1];
+        newArr[i - 1] = newArr[i];
+        newArr[i] = temp;
+      }
+      return newArr;
+    });
+  };
+  const goDown = (i) => {
+    setFiles((prevFiles) => {
+      const newArr = [...prevFiles];
+      if (i + 1 < originalFiles.length) {
+        const temp = newArr[i + 1];
+        newArr[i + 1] = newArr[i];
+        newArr[i] = temp;
+      }
+      return newArr;
+    });
+    setOriginalFiles((prevFiles) => {
+      const newArr = [...prevFiles];
+      if (i + 1 < originalFiles.length) {
+        const temp = newArr[i + 1];
+        newArr[i + 1] = newArr[i];
+        newArr[i] = temp;
+      }
+      return newArr;
+    });
+  };
   return (
     <>
       <div className={clsx(classes.root, className)} {...rest}>
@@ -237,7 +286,7 @@ function FilesDropzone({
                               alignItems="center"
                               className={classes.fileDesc}
                             >
-                              <Grid item md={10} xs={12}>
+                              <Grid item md={8} xs={12}>
                                 <ListItemText
                                   style={{ marginLeft: "10px" }}
                                   primary={originalFiles[i].name || Date.now()}
@@ -254,14 +303,41 @@ function FilesDropzone({
                                   }
                                 />
                               </Grid>
-                              <Grid item md={2} xs={12}>
+                              <Grid
+                                item
+                                md={4}
+                                xs={12}
+                                alignContent="right"
+                                className={classes.iconGroup}
+                              >
                                 <div>
-                                  <Tooltip title="Download image">
+                                  {i > 0 ? (
+                                    <Tooltip title="Move Up">
+                                      <IconButton
+                                        edge="end"
+                                        onClick={() => goUp(i)}
+                                      >
+                                        <UpArrowIcon />
+                                      </IconButton>
+                                    </Tooltip>
+                                  ) : null}
+                                  {i + 1 < originalFiles.length ? (
+                                    <Tooltip title="Move Down">
+                                      <IconButton
+                                        edge="end"
+                                        onClick={() => goDown(i)}
+                                      >
+                                        <DownArrowIcon />
+                                      </IconButton>
+                                    </Tooltip>
+                                  ) : null}
+
+                                  <Tooltip title="Download">
                                     <IconButton
                                       edge="end"
                                       onClick={() => handleDownloadImage(i)}
                                     >
-                                      <DownloadIcon />
+                                      <SaveIcon />
                                     </IconButton>
                                   </Tooltip>
                                   <Tooltip title="Delete image">

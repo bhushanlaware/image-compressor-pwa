@@ -29,6 +29,7 @@ export default function DiscreteSlider(props) {
       </Typography>
       <Slider
         getAriaValueText={valuetext}
+        color="secondary"
         aria-labelledby="discrete-slider"
         step={1}
         min={5}
@@ -51,12 +52,13 @@ export default function DiscreteSlider(props) {
         onChange={(e, v) => {
           setSize(v);
         }}
+        color="secondary"
         value={size}
         valueLabelDisplay="auto"
       />
       <Button
         variant="contained"
-        color="primary"
+        color="secondary"
         style={{ float: "left" }}
         disabled={!props.completed}
         startIcon={<PDFIcon />}
@@ -64,7 +66,7 @@ export default function DiscreteSlider(props) {
           props.showPdf(true);
         }}
       >
-        Want PDF?
+        Want PDF ?
       </Button>
       <Button
         variant="contained"

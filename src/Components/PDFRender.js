@@ -12,7 +12,7 @@ import React from "react";
 // Create styles
 const styles = StyleSheet.create({
   page: {
-    flexDirection: "row",
+    flexDirection: "column",
     backgroundColor: "#E4E4E4",
   },
   section: {
@@ -35,7 +35,7 @@ const MyDocument = ({ images }) => (
 
 const PDFRender = React.memo(({ images, ...rest }) => {
   return (
-    <Modal {...rest} action={"Download PDF"}>
+    <Modal {...rest}>
       <PDFViewer height={1000} width="100%">
         <MyDocument images={images} />
       </PDFViewer>

@@ -8,11 +8,17 @@ import FilesDropzone from "../Components/FilesDropzone";
 import Grid from "@material-ui/core/Grid";
 import PDFRender from "../Components/PDFRender";
 import Paper from "@material-ui/core/Paper";
-import { ThemeProvider } from "@material-ui/core/styles";
-import mainTheme from "../theme/mainTheme";
+import { makeStyles } from "@material-ui/core/styles";
 import zip from "../utils/zip";
 
-const Home = () => {
+const useStyles = makeStyles((theme) => ({
+  root: {
+    backgroundColor: theme.palette.background.default,
+  },
+}));
+
+const Home = (props) => {
+  const classes = useStyles();
   const [originalFiles, setOriginalFiles] = useState([]);
   const [files, setFiles] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -32,53 +38,51 @@ const Home = () => {
   };
   return (
     <>
-      <ThemeProvider theme={mainTheme}>
-        <AppBar title={"Offline Image Compressor"}></AppBar>
-        <Container maxWidth="lg">
-          <Box mt={2}>
-            <Grid container spacing={2}>
-              <Grid item md={8} xs={12}>
-                <Paper>
-                  <FilesDropzone
-                    files={files}
-                    setFiles={setFiles}
-                    originalFiles={originalFiles}
-                    setOriginalFiles={setOriginalFiles}
-                    loading={loading}
-                    setLoading={setLoading}
+      <AppBar title={"Offline Image Compressor"} {...props}></AppBar>
+      <Container maxWidth="lg" className={classes.root}>
+        <Box mt={2}>
+          <Grid container spacing={2}>
+            <Grid item md={8} xs={12}>
+              <Paper>
+                <FilesDropzone
+                  files={files}
+                  setFiles={setFiles}
+                  originalFiles={originalFiles}
+                  setOriginalFiles={setOriginalFiles}
+                  loading={loading}
+                  setLoading={setLoading}
+                  size={size}
+                  quality={quality}
+                />
+              </Paper>
+            </Grid>
+            <Grid item md={4} xs={12}>
+              <Paper>
+                <Box p={4}>
+                  <Controller
+                    completed={!loading && files.length > 0}
+                    saveZip={saveZip}
+                    isSaving={isSaving}
                     size={size}
                     quality={quality}
-                  />
-                </Paper>
-              </Grid>
-              <Grid item md={4} xs={12}>
-                <Paper>
-                  <Box p={4}>
-                    <Controller
-                      completed={!loading && files.length > 0}
-                      saveZip={saveZip}
-                      isSaving={isSaving}
-                      size={size}
-                      quality={quality}
-                      setQuality={setQuality}
-                      setSize={setSize}
-                      showPdf={setShowPdf}
-                    ></Controller>
-                  </Box>
-                </Paper>
-              </Grid>
+                    setQuality={setQuality}
+                    setSize={setSize}
+                    showPdf={setShowPdf}
+                  ></Controller>
+                </Box>
+              </Paper>
             </Grid>
-          </Box>
-        </Container>
+          </Grid>
+        </Box>
+      </Container>
 
-        {showPdf ? (
-          <PDFRender
-            open={showPdf}
-            setOpen={setShowPdf}
-            images={files}
-          ></PDFRender>
-        ) : null}
-      </ThemeProvider>
+      {showPdf ? (
+        <PDFRender
+          open={showPdf}
+          setOpen={setShowPdf}
+          images={files}
+        ></PDFRender>
+      ) : null}
     </>
   );
 };
