@@ -1,13 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Home from "./Containers/Home";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
 
+  useEffect(() => {
+    let dmode = localStorage.getItem("darkMode");
+    console.log(dmode);
+    // if (dmode == undefined) {
+    //   dmode = false;
+    //   localStorage.setItem("darkMode", dmode);
+    // }
+    dmode === "false" ? setDarkMode(false) : setDarkMode(true);
+  }, []);
   const theme = React.useMemo(
     () =>
       createMuiTheme({
@@ -42,6 +50,7 @@ function App() {
     [darkMode]
   );
   const changeTheme = () => {
+    localStorage.setItem("darkMode", !darkMode);
     setDarkMode(!darkMode);
   };
   return (
