@@ -3,11 +3,21 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "file-saver": "^2.0.2",
+    "image-size": "^0.9.1",
+    "jszip": "^3.5.0",
+    "jszip-utils": "^0.1.0",
+    "nprogress": "^0.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-dropzone": "^11.1.0",
+    "react-image-file-resizer": "^0.3.8",
+    "react-perfect-scrollbar": "^1.5.8",
     "react-scripts": "3.4.3"
   },
   "scripts": {

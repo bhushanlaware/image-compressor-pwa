@@ -1,0 +1,77 @@
+<svg width="728" height="796.3800000000001" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <linearGradient y2="0" x2="0.49997" y1="1" x1="0.49997" id="44dab5fe-2df9-47ba-adb2-140775afca0e">
+   <stop stop-opacity="0.25" stop-color="#b3b3b3" offset="0"/>
+   <stop stop-opacity="0.1" stop-color="#b3b3b3" offset="0.54"/>
+   <stop stop-opacity="0.05" stop-color="#b3b3b3" offset="1"/>
+  </linearGradient>
+  <linearGradient xlink:href="#44dab5fe-2df9-47ba-adb2-140775afca0e" y2="3.5" x2="49.46" y1="96.5" x1="49.46" id="b071ddd1-33a6-4512-b8b6-1cee124e019a"/>
+  <linearGradient y2="0" x2="0.5" y1="1" x1="0.5" id="d200849e-56d5-45c5-85eb-e9070e3330a6">
+   <stop stop-opacity="0.25" stop-color="gray" offset="0"/>
+   <stop stop-opacity="0.12" stop-color="gray" offset="0.54"/>
+   <stop stop-opacity="0.1" stop-color="gray" offset="1"/>
+  </linearGradient>
+  <linearGradient xlink:href="#d200849e-56d5-45c5-85eb-e9070e3330a6" y2="645.68" x2="627.87" y1="746.82" x1="627.87" id="39846f9a-c4dd-4a41-91c8-743bb7d77e65"/>
+  <linearGradient xlink:href="#44dab5fe-2df9-47ba-adb2-140775afca0e" y2="96.81" x2="611" y1="802.81" x1="611" id="af8f0828-33b7-4bd6-b50f-ae3d37501acf"/>
+  <linearGradient xlink:href="#44dab5fe-2df9-47ba-adb2-140775afca0e" y2="48.5" x2="154.46" y1="141.5" x1="154.46" id="152252ce-949a-4e00-886c-6a46b2444b40"/>
+ </defs>
+ <title>add file2</title>
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="602" width="802" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <path id="svg_1" fill="url(#44dab5fe-2df9-47ba-adb2-140775afca0e)" d="m414,643c0,-51.76 51.11,-99.48 102.87,-99.48c7.93,0 15.62,-2 23,-0.16c0.1,-2.26 0.16,-15.54 0.16,-17.82l0,-525.54l-448.03,0l-92,94.5l0,611.5l423,0c-9.1,-14.44 -9,-44.66 -9,-63z"/>
+  <path id="svg_2" fill="#fcfcfc" d="m406,653a117,117 0 0 1 117,-117c3.53,0 7,0.17 10.48,0.47l0,-271.28l-525,0l0,428.81l404.91,0a116.74,116.74 0 0 1 -7.39,-41z"/>
+  <polygon id="svg_3" fill="#fcfcfc" points="533.09 269.19 6.91 269.19 6.91 94.5 92 5.5 533.09 5.5 533.09 269.19"/>
+  <rect id="svg_4" fill="#e0e0e0" height="10.89" width="142.73" y="58.59" x="357.59"/>
+  <rect id="svg_5" fill="#e0e0e0" height="10.89" width="142.73" y="98.59" x="357.59"/>
+  <rect id="svg_6" fill="#e0e0e0" height="10.89" width="142.73" y="138.59" x="357.59"/>
+  <rect id="svg_7" opacity="0.5" fill="#6c63ff" height="10.89" width="142.73" y="178.59" x="357.59"/>
+  <rect id="svg_8" fill="#e0e0e0" height="10.89" width="142.73" y="218.59" x="357.59"/>
+  <rect id="svg_9" fill="#e0e0e0" height="10.89" width="142.73" y="258.59" x="357.59"/>
+  <rect id="svg_10" opacity="0.5" fill="#6c63ff" height="10.89" width="142.73" y="343.59" x="84.72"/>
+  <rect id="svg_11" fill="#e0e0e0" height="10.89" width="142.73" y="387.13" x="84.72"/>
+  <rect id="svg_12" opacity="0.5" fill="#69f0ae" height="10.89" width="372.56" y="365.36" x="84.72"/>
+  <rect id="svg_13" opacity="0.5" fill="#6c63ff" height="10.89" width="142.73" y="448.82" x="84.72"/>
+  <rect id="svg_14" fill="#e0e0e0" height="10.89" width="142.73" y="492.37" x="84.72"/>
+  <rect id="svg_15" fill="#e0e0e0" height="10.89" width="372.56" y="470.59" x="84.72"/>
+  <rect id="svg_16" opacity="0.5" fill="#6c63ff" height="10.89" width="142.73" y="554.06" x="84.72"/>
+  <rect id="svg_17" fill="#e0e0e0" height="10.89" width="142.73" y="597.6" x="84.72"/>
+  <rect id="svg_18" fill="#e0e0e0" height="10.89" width="305.41" y="575.83" x="84.72"/>
+  <polygon id="svg_19" fill="#14e2e2" points="310 281 50 281 50 54 59 43 79.75 43 310 43 310 281"/>
+  <polygon id="svg_20" fill="url(#b071ddd1-33a6-4512-b8b6-1cee124e019a)" points="4.91 96.5 94 96.5 94 3.5 4.91 96.5"/>
+  <polygon id="svg_21" fill="#f5f5f5" points="6.91 94.5 92 94.5 92 5.5 6.91 94.5"/>
+  <g id="svg_22" opacity="0.5">
+   <circle id="svg_23" fill="url(#d200849e-56d5-45c5-85eb-e9070e3330a6)" r="100.13" cy="696.25" cx="627.87"/>
+  </g>
+  <circle id="svg_24" fill="#bfbf00" r="93.72" cy="696.25" cx="627.87"/>
+  <g id="svg_25" opacity="0.5">
+   <polygon id="svg_26" fill="url(#39846f9a-c4dd-4a41-91c8-743bb7d77e65)" points="678.44 684.95 639.16 684.95 639.16 645.68 616.58 645.68 616.58 684.95 577.3 684.95 577.3 707.54 616.58 707.54 616.58 746.82 639.16 746.82 639.16 707.54 678.44 707.54 678.44 684.95"/>
+  </g>
+  <rect id="svg_27" fill="#fff" height="85.97" width="19.2" y="653.26" x="618.27"/>
+  <rect id="svg_28" fill="#fff" transform="rotate(90 1375.9300537109377,-167.61999511718741) " height="85.97" width="19.2" y="537.45" x="2230.20005"/>
+  <path id="svg_29" fill="url(#af8f0828-33b7-4bd6-b50f-ae3d37501acf)" d="m519,688c0,-51.76 51.11,-99.48 102.87,-99.48c7.93,0 15.62,-2 23,-0.16c0.1,-2.26 0.16,-15.54 0.16,-17.82l0,-525.54l-448.03,0l-92,94.5l0,611.5l423,0c-9.1,-14.44 -9,-44.66 -9,-63z"/>
+  <path id="svg_30" fill="#fff" d="m511,698a117,117 0 0 1 117,-117c3.53,0 7,0.17 10.48,0.47l0,-271.28l-525,0l0,428.81l404.91,0a116.74,116.74 0 0 1 -7.39,-41z"/>
+  <polygon id="svg_31" fill="#fff" points="638.09 314.19 111.91 314.19 111.91 139.5 197 50.5 638.09 50.5 638.09 314.19"/>
+  <rect id="svg_32" fill="#e0e0e0" height="10.89" width="142.73" y="103.59" x="462.59"/>
+  <rect id="svg_33" fill="#e0e0e0" height="10.89" width="142.73" y="143.59" x="462.59"/>
+  <rect id="svg_34" fill="#e0e0e0" height="10.89" width="142.73" y="183.59" x="462.59"/>
+  <rect id="svg_35" opacity="0.5" fill="#6c63ff" height="10.89" width="142.73" y="223.59" x="462.59"/>
+  <rect id="svg_36" fill="#e0e0e0" height="10.89" width="142.73" y="263.59" x="462.59"/>
+  <rect id="svg_37" fill="#e0e0e0" height="10.89" width="142.73" y="303.59" x="462.59"/>
+  <rect id="svg_38" opacity="0.5" fill="#6c63ff" height="10.89" width="142.73" y="388.59" x="189.72"/>
+  <rect id="svg_39" fill="#e0e0e0" height="10.89" width="142.73" y="432.13" x="189.72"/>
+  <rect id="svg_40" opacity="0.5" fill="#69f0ae" height="10.89" width="372.56" y="410.36" x="189.72"/>
+  <rect id="svg_41" opacity="0.5" fill="#6c63ff" height="10.89" width="142.73" y="493.82" x="189.72"/>
+  <rect id="svg_42" fill="#e0e0e0" height="10.89" width="142.73" y="537.37" x="189.72"/>
+  <rect id="svg_43" fill="#e0e0e0" height="10.89" width="372.56" y="515.59" x="189.72"/>
+  <rect id="svg_44" opacity="0.5" fill="#6c63ff" height="10.89" width="142.73" y="599.06" x="189.72"/>
+  <rect id="svg_45" fill="#e0e0e0" height="10.89" width="142.73" y="642.6" x="189.72"/>
+  <rect id="svg_46" fill="#e0e0e0" height="10.89" width="305.41" y="620.83" x="189.72"/>
+  <polygon id="svg_47" fill="#14e2e2" points="415 326 155 326 155 99 164 88 184.75 88 415 88 415 326"/>
+  <polygon id="svg_48" fill="url(#152252ce-949a-4e00-886c-6a46b2444b40)" points="109.91 141.5 199 141.5 199 48.5 109.91 141.5"/>
+  <polygon id="svg_49" fill="#fcfcfc" points="111.91 139.5 197 139.5 197 50.5 111.91 139.5"/>
+ </g>
+</svg>
