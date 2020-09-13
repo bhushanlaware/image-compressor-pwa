@@ -1,13 +1,16 @@
-import React from "react";
 import Resizer from "react-image-file-resizer";
+import arrayBufferToBuffer from "arraybuffer-to-buffer";
+import sizeOf from "buffer-image-size";
 
-const resizeFile = (file, size, quality) =>
+const resizeFile = (file, dimention, quality) =>
   new Promise((resolve, reject) => {
     console.log(file.name.split(".").pop());
+    console.log("H", dimention.height);
+    console.log("W", dimention.width);
     Resizer.imageFileResizer(
       file,
-      size * 20,
-      size * 20,
+      dimention.height,
+      dimention.width,
       file.name.split(".").pop(),
       quality,
       0,
@@ -20,14 +23,35 @@ const resizeFile = (file, size, quality) =>
 
 const resizeFiles = async (files, size, quality) => {
   const newFiles = [];
+
   for (let index = 0; index < files.length; index++) {
-    // const imgEl = React.createElement("img", {
-    //   src: URL.createObjectURL(files[index].uri),
-    // });
-    //  console.log(imgEl);
-    const resFile = await resizeFile(files[index], size, quality);
+    //const dataUrl = URL.createObjectURL(files[index]);
+    // const imgEl = document.createElement("img");
+    // imgEl.src = dataUrl;
+
+    // imgEl.onload = async function () {
+    //   const resFile = await resizeFile(
+    //     files[index],
+    //     {
+    //       height: (imgEl.naturalHeight / 100) * size,
+    //       width: (imgEl.naturalWidth / 100) * size,
+    //     },
+    //     quality
+    //   );
+    // newFiles.push(resFile);
+    const arrayBuffer = await files[index].arrayBuffer();
+    const dimention = sizeOf(arrayBufferToBuffer(arrayBuffer));
+    const resFile = await resizeFile(
+      files[index],
+      {
+        height: (dimention.height / 100) * size,
+        width: (dimention.width / 100) * size,
+      },
+      quality
+    );
     newFiles.push(resFile);
   }
+
   return newFiles;
 };
 

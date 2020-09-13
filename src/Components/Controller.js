@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import PDFIcon from "@material-ui/icons/PictureAsPdf";
 import SaveIcon from "@material-ui/icons/Save";
 import Slider from "@material-ui/core/Slider";
 import Typography from "@material-ui/core/Typography";
@@ -24,35 +25,47 @@ export default function DiscreteSlider(props) {
   return (
     <div className={classes.root}>
       <Typography id="discrete-slider" gutterBottom>
-        Quality
+        Max Interations :{quality}
       </Typography>
       <Slider
         getAriaValueText={valuetext}
         aria-labelledby="discrete-slider"
-        step={10}
-        min={10}
-        max={100}
+        step={1}
+        min={5}
+        max={30}
         onChange={(e, v) => {
           setQuality(v);
         }}
         value={quality}
-        valueLabelDisplay="on"
+        valueLabelDisplay="auto"
       />
       <Typography id="discrete-slider" gutterBottom>
-        Size
+        Max Size :{size} px
       </Typography>
       <Slider
         getAriaValueText={valuetext}
         aria-labelledby="discrete-slider"
-        step={10}
-        min={10}
-        max={100}
+        step={32}
+        min={32}
+        max={1024}
         onChange={(e, v) => {
           setSize(v);
         }}
         value={size}
-        valueLabelDisplay="on"
+        valueLabelDisplay="auto"
       />
+      <Button
+        variant="contained"
+        color="primary"
+        style={{ float: "left" }}
+        disabled={!props.completed}
+        startIcon={<PDFIcon />}
+        onClick={() => {
+          props.showPdf(true);
+        }}
+      >
+        Want PDF?
+      </Button>
       <Button
         variant="contained"
         color="primary"

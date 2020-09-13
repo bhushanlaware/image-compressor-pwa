@@ -6,6 +6,7 @@ import Container from "@material-ui/core/Container";
 import Controller from "../Components/Controller";
 import FilesDropzone from "../Components/FilesDropzone";
 import Grid from "@material-ui/core/Grid";
+import PDFRender from "../Components/PDFRender";
 import Paper from "@material-ui/core/Paper";
 import { ThemeProvider } from "@material-ui/core/styles";
 import mainTheme from "../theme/mainTheme";
@@ -16,9 +17,9 @@ const Home = () => {
   const [files, setFiles] = useState([]);
   const [loading, setLoading] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
-  const [quality, setQuality] = useState(80);
-  const [size, setSize] = useState(80);
-
+  const [quality, setQuality] = useState(10);
+  const [size, setSize] = useState(1024);
+  const [showPdf, setShowPdf] = useState(false);
   const saveZip = () => {
     setIsSaving(true);
     zip(files)
@@ -61,6 +62,7 @@ const Home = () => {
                       quality={quality}
                       setQuality={setQuality}
                       setSize={setSize}
+                      showPdf={setShowPdf}
                     ></Controller>
                   </Box>
                 </Paper>
@@ -68,6 +70,14 @@ const Home = () => {
             </Grid>
           </Box>
         </Container>
+
+        {showPdf ? (
+          <PDFRender
+            open={showPdf}
+            setOpen={setShowPdf}
+            images={files}
+          ></PDFRender>
+        ) : null}
       </ThemeProvider>
     </>
   );

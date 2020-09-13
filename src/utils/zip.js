@@ -19,7 +19,7 @@ export default (files) =>
     const zip = new jszip();
 
     files.forEach((imgFile) => {
-      zip.file(imgFile.file.name, urlToPromise(imgFile.uri), { binary: true });
+      zip.file(imgFile.name, imgFile, { binary: true });
     });
 
     zip.generateAsync({ type: "blob" }).then(function (content) {
