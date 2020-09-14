@@ -22,7 +22,7 @@ function Support() {
     <Typography variant="subtitle2">
       Created with
       <span role="img" aria-label="heart-emoji">
-        &nbsp;❤️,&nbsp;&nbsp;
+        ❤️
       </span>
       Consider following me on
       <IconButton
@@ -34,7 +34,7 @@ function Support() {
       </IconButton>
       if truly enjoying
       <span role="img" aria-label="heart-emoji">
-        &nbsp;OIC 🚀 &nbsp;
+        &nbsp;OIC 🚀
       </span>
     </Typography>
   );
