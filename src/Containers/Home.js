@@ -5,6 +5,7 @@ import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Controller from "../Components/Controller";
 import FilesDropzone from "../Components/FilesDropzone";
+import Footer from "../Components/Footer";
 import Grid from "@material-ui/core/Grid";
 import PDFRender from "../Components/PDFRender";
 import Paper from "@material-ui/core/Paper";
@@ -14,6 +15,9 @@ import zip from "../utils/zip";
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.default,
+    display: "flex",
+    flexDirection: "column",
+    minHeight: "100vh",
   },
 }));
 
@@ -41,7 +45,7 @@ const Home = (props) => {
     <>
       <AppBar title={"Offline Image Compressor"} {...props}></AppBar>
       <Container maxWidth="lg" className={classes.root}>
-        <Box mt={2}>
+        <Box mt={2} pb={2}>
           <Grid container spacing={2}>
             <Grid item md={8} xs={12}>
               <Paper>
@@ -78,6 +82,7 @@ const Home = (props) => {
           </Grid>
         </Box>
       </Container>
+      <Footer></Footer>
 
       {showPdf ? (
         <PDFRender
