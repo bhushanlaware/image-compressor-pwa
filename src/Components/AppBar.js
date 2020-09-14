@@ -19,6 +19,10 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
+  logoimg: {
+    // backgroundColor: theme.palette.background.default,
+    // borderRadius:'1'
+  },
 }));
 
 export default function ButtonAppBar(props) {
@@ -28,14 +32,19 @@ export default function ButtonAppBar(props) {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          {/* <IconButton
+          <IconButton
             edge="start"
             className={classes.menuButton}
             color="inherit"
             aria-label="menu"
           >
-            <MenuIcon />
-          </IconButton> */}
+            <img
+              src="./android-chrome-512x512.png"
+              alt="logo"
+              height="38"
+              className={classes.logoimg}
+            ></img>
+          </IconButton>
           <Typography variant="h6" className={classes.title}>
             {props.title}
           </Typography>

@@ -70,14 +70,13 @@ export default function ImageCompare(props) {
           <Typography variant="h6" className={classes.title}>
             {props.title}
           </Typography>
+
+          {props.actionBtn && props.actionBtn.length > 0 ? (
+            <>{props.actionBtn.map((btn) => btn)}</>
+          ) : null}
           <Button autoFocus color="inherit" onClick={handleClose}>
             Close
           </Button>
-          {props.action ? (
-            <Button autoFocus color="inherit" onClick={props.onActionClick}>
-              {props.action}
-            </Button>
-          ) : null}
         </Toolbar>
       </AppBar>
 

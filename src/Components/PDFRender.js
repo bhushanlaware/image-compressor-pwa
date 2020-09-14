@@ -1,13 +1,15 @@
-import ReactPDF, {
+import { Button, CircularProgress } from "@material-ui/core";
+import {
   Document,
   Image,
+  PDFDownloadLink,
   PDFViewer,
   Page,
   StyleSheet,
 } from "@react-pdf/renderer";
+import React, { useRef } from "react";
 
 import Modal from "./Modal";
-import React from "react";
 
 // Create styles
 const styles = StyleSheet.create({
@@ -34,8 +36,28 @@ const MyDocument = ({ images }) => (
 );
 
 const PDFRender = React.memo(({ images, ...rest }) => {
+  const handlePDF = () => {
+    // ReactPDF.render(<MyDocument />, `example.pdf`);
+  };
+  const downloadBtn = (
+    <PDFDownloadLink
+      document={<MyDocument images={images} />}
+      fileName="_commpressedoImage.pdf"
+      style={{ textDecoration: "none" }}
+    >
+      {({ blob, url, loading, error }) =>
+        loading ? (
+          <CircularProgress></CircularProgress>
+        ) : (
+          <Button color="white" style={{ color: "white" }}>
+            Download Now
+          </Button>
+        )
+      }
+    </PDFDownloadLink>
+  );
   return (
-    <Modal {...rest}>
+    <Modal {...rest} actionBtn={[downloadBtn]}>
       <PDFViewer height={1000} width="100%">
         <MyDocument images={images} />
       </PDFViewer>

@@ -17,7 +17,8 @@ const useStyles = makeStyles((theme) => ({
     padding: "10px",
     zIndex: "11",
     [theme.breakpoints.down("sm")]: {
-      top: "30px",
+      top: "40px",
+      fontSize: "16px !important",
     },
     [theme.breakpoints.up("sm")]: {
       top: "80px",
@@ -34,12 +35,12 @@ const ImageCompare = React.memo(({ original, compressed, ...rest }) => {
     <Modal {...rest} title={"Compare Images"}>
       <Grid container spacing={2} className={classes.showTitle}>
         <Grid item xs={6}>
-          <Typography variant="h4" className={classes.heading}>
+          <Typography variant="h6" className={classes.heading}>
             Original
           </Typography>
         </Grid>
         <Grid item xs={6} style={{ textAlign: "right" }}>
-          <Typography className={classes.heading} variant="h4">
+          <Typography className={classes.heading} variant="h6">
             Compressed
           </Typography>
         </Grid>

@@ -1,6 +1,6 @@
+import { Button, Grid } from "@material-ui/core";
 import React, { useState } from "react";
 
-import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import PDFIcon from "@material-ui/icons/PictureAsPdf";
 import SaveIcon from "@material-ui/icons/Save";
@@ -56,37 +56,40 @@ export default function DiscreteSlider(props) {
         value={size}
         valueLabelDisplay="auto"
       />
-      <Button
-        variant="contained"
-        color="secondary"
-        style={{ float: "left" }}
-        disabled={!props.completed}
-        startIcon={<PDFIcon />}
-        onClick={() => {
-          props.showPdf(true);
-        }}
-      >
-        Want PDF ?
-      </Button>
-      <Button
-        variant="contained"
-        color="primary"
-        style={{ float: "right" }}
-        disabled={!props.completed}
-        startIcon={
-          props.isSaving ? (
-            <CircularProgress
-              style={{ width: "20px", height: "20px", color: "white" }}
-            />
-          ) : (
-            <SaveIcon />
-          )
-        }
-        onClick={handleSave}
-      >
-        Download Zip
-      </Button>
-      <div style={{ clear: "both" }}></div>
+      <Grid container spacing={1} justify="center">
+        <Grid item md={6} xs={12} style={{ textAlign: "center" }}>
+          <Button
+            variant="contained"
+            color="primary"
+            disabled={!props.completed}
+            startIcon={
+              props.isSaving ? (
+                <CircularProgress
+                  style={{ width: "20px", height: "20px", color: "white" }}
+                />
+              ) : (
+                <SaveIcon />
+              )
+            }
+            onClick={handleSave}
+          >
+            Download Zip
+          </Button>
+        </Grid>
+        <Grid item md={6} xs={12} style={{ textAlign: "center" }}>
+          <Button
+            variant="contained"
+            color="secondary"
+            disabled={!props.completed}
+            startIcon={<PDFIcon />}
+            onClick={() => {
+              props.showPdf(true);
+            }}
+          >
+            Want PDF ?
+          </Button>
+        </Grid>
+      </Grid>
     </div>
   );
 }
