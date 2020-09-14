@@ -45,7 +45,7 @@ export default function ImageCompare(props) {
   const classes = useStyles();
   console.log(props);
   const { open, setOpen } = props;
-  debugger;
+
   const handleClose = () => {
     setOpen(false);
   };

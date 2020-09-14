@@ -7,38 +7,39 @@ import {
   Page,
   StyleSheet,
 } from "@react-pdf/renderer";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 
 import Modal from "./Modal";
 
-// Create styles
-const styles = StyleSheet.create({
-  page: {
-    flexDirection: "column",
-    backgroundColor: "#E4E4E4",
-  },
-  section: {
-    margin: 10,
-    padding: 10,
-    flexGrow: 1,
-  },
-});
+const PDFRender = React.memo(({ images, fill, ...rest }) => {
+  // Create styles
+  let styles = StyleSheet.create({
+    page: {
+      flexDirection: fill,
+      backgroundColor: "#E4E4E4",
+    },
+    section: {
+      margin: 10,
+      padding: 10,
+      flexGrow: 1,
+    },
+  });
 
-// Create Document Component
-const MyDocument = ({ images }) => (
-  <Document>
-    {images.map((img) => (
-      <Page size="A4" style={styles.page}>
-        <Image src={URL.createObjectURL(img)}></Image>
-      </Page>
-    ))}
-  </Document>
-);
+  useEffect(() => {
+    console.log(styles);
+    styles.page.flexDirection = fill;
+  }, [fill]);
+  // Create Document Component
+  const MyDocument = ({ images }) => (
+    <Document>
+      {images.map((img) => (
+        <Page size="A4" style={styles.page}>
+          <Image src={URL.createObjectURL(img)}></Image>
+        </Page>
+      ))}
+    </Document>
+  );
 
-const PDFRender = React.memo(({ images, ...rest }) => {
-  const handlePDF = () => {
-    // ReactPDF.render(<MyDocument />, `example.pdf`);
-  };
   const downloadBtn = (
     <PDFDownloadLink
       document={<MyDocument images={images} />}

@@ -140,6 +140,7 @@ function FilesDropzone({
   };
   const handleRemoveAll = () => {
     setFiles([]);
+    setOriginalFiles([]);
   };
   const handleRemoveFile = (index) => {
     let newFiles = files;
@@ -150,7 +151,6 @@ function FilesDropzone({
     setOriginalFiles([...newFilesOrignal]);
   };
   const handleDownloadImage = (index) => {
-    debugger;
     saveAs(files[index], "_compressed" + files[index].name);
   };
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
@@ -307,7 +307,6 @@ function FilesDropzone({
                                 item
                                 md={4}
                                 xs={12}
-                                alignContent="right"
                                 className={classes.iconGroup}
                               >
                                 <div>

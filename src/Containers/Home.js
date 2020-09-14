@@ -26,6 +26,7 @@ const Home = (props) => {
   const [quality, setQuality] = useState(10);
   const [size, setSize] = useState(1024);
   const [showPdf, setShowPdf] = useState(false);
+  const [pdfFill, setPdfFill] = useState("row");
   const saveZip = () => {
     setIsSaving(true);
     zip(files)
@@ -65,9 +66,11 @@ const Home = (props) => {
                     isSaving={isSaving}
                     size={size}
                     quality={quality}
+                    pdfFill={pdfFill}
                     setQuality={setQuality}
                     setSize={setSize}
                     showPdf={setShowPdf}
+                    setPdfFill={setPdfFill}
                   ></Controller>
                 </Box>
               </Paper>
@@ -81,6 +84,7 @@ const Home = (props) => {
           open={showPdf}
           setOpen={setShowPdf}
           images={files}
+          fill={pdfFill}
         ></PDFRender>
       ) : null}
     </>
