@@ -24,7 +24,7 @@ export default (files) =>
 
     zip.generateAsync({ type: "blob" }).then(function (content) {
       // see FileSaver.js
-      saveAs(content, "_offlineImageCompressor_.zip");
+      saveAs(content, "_ImageCompressor_.zip");
       resolve("Saved");
     });
   });

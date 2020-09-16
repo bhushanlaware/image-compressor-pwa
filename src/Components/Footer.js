@@ -34,7 +34,7 @@ function Support() {
       </IconButton>
       if truly enjoying
       <span role="img" aria-label="heart-emoji">
-        &nbsp;OIC 🚀
+        &nbsp;Image Compressor App 🚀
       </span>
     </Typography>
   );

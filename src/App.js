@@ -3,6 +3,7 @@ import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Home from "./Containers/Home";
+import { SnackbarProvider } from "notistack";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -55,8 +56,15 @@ function App() {
   };
   return (
     <ThemeProvider theme={theme}>
+      <SnackbarProvider
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "right",
+        }}
+      >
+        <Home changeTheme={changeTheme} isDark={darkMode} />
+      </SnackbarProvider>
       <CssBaseline />
-      <Home changeTheme={changeTheme} isDark={darkMode} />
     </ThemeProvider>
   );
 }

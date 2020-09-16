@@ -43,7 +43,7 @@ const Home = (props) => {
   };
   return (
     <>
-      <AppBar title={"Offline Image Compressor"} {...props}></AppBar>
+      <AppBar title={"Image Compressor"} {...props}></AppBar>
       <Container maxWidth="lg" className={classes.root}>
         <Box mt={2} pb={2}>
           <Grid container spacing={2}>

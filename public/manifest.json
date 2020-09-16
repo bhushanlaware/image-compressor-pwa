@@ -1,6 +1,6 @@
 {
-  "short_name": "OIC",
-  "name": "Offline Image Compresser",
+  "short_name": "IC",
+  "name": "Image Compresser",
   "icons": [
     {
       "src": "favicon.ico",

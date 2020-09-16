@@ -17,6 +17,7 @@
     "image-size": "^0.9.1",
     "jszip": "^3.5.0",
     "jszip-utils": "^0.1.0",
+    "notistack": "^1.0.0",
     "nprogress": "^0.2.0",
     "react": "^16.13.1",
     "react-compare-slider": "^1.2.0",

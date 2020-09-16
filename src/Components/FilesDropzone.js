@@ -28,6 +28,7 @@ import clsx from "clsx";
 import fileCompressor from "../utils/fileCompressor";
 import { saveAs } from "file-saver";
 import { useDropzone } from "react-dropzone";
+import { useSnackbar } from "notistack";
 
 const useStyles = makeStyles((theme) => ({
   fileDesc: {
@@ -100,12 +101,23 @@ function FilesDropzone({
   setOriginalFiles,
   ...rest
 }) {
+  const { enqueueSnackbar } = useSnackbar();
   const classes = useStyles();
   const [showCompare, setShowCompare] = useState(false);
   const [compareOriginal, setCompareOriginal] = useState(null);
   const [compareCompressed, setcompareCompressed] = useState(null);
-  const handleDrop = (acceptedFiles) => {
+  const handleDrop = (acceptedFiles, rejectedFiles) => {
     setLoading(true);
+    if (rejectedFiles.length > 0) {
+      console.log(rejectedFiles);
+      // const files = rejectedFiles.reduce(
+      //   (a, v) => (a += v.file.name + ",\n"),
+      //   ""
+      // );
+      enqueueSnackbar("Not valid image", {
+        variant: "error",
+      });
+    }
     // resizeFiles(acceptedFiles, size, quality).then((newFiles) => {
     //   setFiles((prevFiles) => [...prevFiles].concat(newFiles));
     //   setOriginalFiles((prevFiles) => [...prevFiles].concat(acceptedFiles));
@@ -155,6 +167,7 @@ function FilesDropzone({
   };
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop: handleDrop,
+    accept: "image/x-png,image/gif,image/jpeg",
   });
   const goUp = (i) => {
     setFiles((prevFiles) => {
@@ -206,7 +219,11 @@ function FilesDropzone({
           })}
           {...getRootProps()}
         >
-          <input {...getInputProps()} />
+          <input
+            {...getInputProps()}
+            type="file"
+            accept="image/x-png,image/gif,image/jpeg"
+          />
           <div style={{ padding: "10px" }}>
             <img
               alt="Select file"
