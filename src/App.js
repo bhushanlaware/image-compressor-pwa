@@ -7,16 +7,6 @@ import { SnackbarProvider } from "notistack";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
-
-  useEffect(() => {
-    let dmode = localStorage.getItem("darkMode");
-    console.log(dmode);
-    // if (dmode == undefined) {
-    //   dmode = false;
-    //   localStorage.setItem("darkMode", dmode);
-    // }
-    dmode === "false" ? setDarkMode(false) : setDarkMode(true);
-  }, []);
   const theme = React.useMemo(
     () =>
       createMuiTheme({
@@ -50,6 +40,24 @@ function App() {
       }),
     [darkMode]
   );
+
+  useEffect(() => {
+    let dmode = localStorage.getItem("darkMode");
+
+    // if (dmode == undefined) {
+    //   dmode = false;
+    //   localStorage.setItem("darkMode", dmode);
+    // }
+    dmode === "false" ? setDarkMode(false) : setDarkMode(true);
+  }, []);
+
+  // useEffect(() => {
+  //   window["isUpdateAvailable"].then((isAvailable) => {
+  //     if (isAvailable) {
+  //       window.location.href = "/";
+  //     }
+  //   });
+  // }, []);
   const changeTheme = () => {
     localStorage.setItem("darkMode", !darkMode);
     setDarkMode(!darkMode);
@@ -58,13 +66,13 @@ function App() {
     <ThemeProvider theme={theme}>
       <SnackbarProvider
         anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "right",
+          vertical: "top",
+          horizontal: "center",
         }}
       >
         <Home changeTheme={changeTheme} isDark={darkMode} />
+        <CssBaseline />
       </SnackbarProvider>
-      <CssBaseline />
     </ThemeProvider>
   );
 }

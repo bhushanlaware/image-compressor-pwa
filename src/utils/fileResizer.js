@@ -4,14 +4,11 @@ import sizeOf from "buffer-image-size";
 
 const resizeFile = (file, dimention, quality) =>
   new Promise((resolve, reject) => {
-    console.log(file.name.split(".").pop());
-    console.log("H", dimention.height);
-    console.log("W", dimention.width);
     Resizer.imageFileResizer(
       file,
       dimention.height,
       dimention.width,
-      file.name.split(".").pop(),
+      "jpeg", //file.name.split(".").pop(),
       quality,
       0,
       (uri) => {

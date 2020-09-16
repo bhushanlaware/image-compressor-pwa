@@ -43,7 +43,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 export default function ImageCompare(props) {
   const classes = useStyles();
-  console.log(props);
+
   const { open, setOpen } = props;
 
   const handleClose = () => {

@@ -114,9 +114,11 @@ function FilesDropzone({
       //   (a, v) => (a += v.file.name + ",\n"),
       //   ""
       // );
-      enqueueSnackbar("Not valid image", {
+      setLoading(false);
+      enqueueSnackbar("Not valid image! 😎", {
         variant: "error",
       });
+      return;
     }
     // resizeFiles(acceptedFiles, size, quality).then((newFiles) => {
     //   setFiles((prevFiles) => [...prevFiles].concat(newFiles));
@@ -124,9 +126,15 @@ function FilesDropzone({
     //   setLoading(false);
     // });
     fileCompressor(acceptedFiles, size, quality).then((newFiles) => {
-      console.log(newFiles);
       setFiles((prevFiles) => [...prevFiles].concat(newFiles));
       setOriginalFiles((prevFiles) => [...prevFiles].concat(acceptedFiles));
+      enqueueSnackbar(
+        "✨Compressed!✨ You Can download images as zip or PDF😉",
+        {
+          variant: "Success",
+        }
+      );
+
       setLoading(false);
     });
   };
@@ -167,7 +175,7 @@ function FilesDropzone({
   };
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop: handleDrop,
-    accept: "image/x-png,image/gif,image/jpeg",
+    accept: "image/x-png,image/gif,image/jpeg,image/png,image/jpg",
   });
   const goUp = (i) => {
     setFiles((prevFiles) => {

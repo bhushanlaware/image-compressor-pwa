@@ -93,7 +93,6 @@ export default function DiscreteSlider(props) {
                     value={pdfFill}
                     exclusive
                     onChange={(e, v) => {
-                      console.log(v);
                       setPdfFill(v);
                     }}
                     size={"small"}

@@ -26,7 +26,6 @@ const PDFRender = React.memo(({ images, fill, ...rest }) => {
   });
 
   useEffect(() => {
-    console.log(styles);
     styles.page.flexDirection = fill;
   }, [fill]);
   // Create Document Component
