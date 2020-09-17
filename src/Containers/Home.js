@@ -7,6 +7,7 @@ import Controller from "../Components/Controller";
 import FilesDropzone from "../Components/FilesDropzone";
 import Footer from "../Components/Footer";
 import Grid from "@material-ui/core/Grid";
+import InstallPWA from "../Components/InstallPWA";
 import PDFRender from "../Components/PDFRender";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
@@ -44,7 +45,11 @@ const Home = (props) => {
   return (
     <>
       <AppBar title={"Image Compressor"} {...props}></AppBar>
-      <Container maxWidth="lg" className={classes.root}>
+      <Container
+        maxWidth="lg"
+        style={{ marginTop: "10px" }}
+        className={classes.root}
+      >
         <Box mt={2} pb={2}>
           <Grid container spacing={2}>
             <Grid item md={8} xs={12}>

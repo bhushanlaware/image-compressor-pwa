@@ -1,6 +1,7 @@
 import AppBar from "@material-ui/core/AppBar";
 import DarkIcon from "@material-ui/icons/Brightness2";
 import IconButton from "@material-ui/core/IconButton";
+import InstallPWA from "./InstallPWA";
 import LightIcon from "@material-ui/icons/WbSunny";
 import MenuIcon from "@material-ui/icons/Menu";
 import React from "react";
@@ -48,6 +49,7 @@ export default function ButtonAppBar(props) {
           <Typography variant="h6" className={classes.title}>
             {props.title}
           </Typography>
+
           <Tooltip title="Change Theme">
             <IconButton color="inherit" onClick={props.changeTheme}>
               {!props.isDark ? (
@@ -57,6 +59,7 @@ export default function ButtonAppBar(props) {
               )}
             </IconButton>
           </Tooltip>
+          <InstallPWA></InstallPWA>
         </Toolbar>
       </AppBar>
     </div>
