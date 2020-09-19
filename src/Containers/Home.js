@@ -1,11 +1,13 @@
-import React, { Suspense, lazy, useState } from "react";
+import React, { Component, Suspense, lazy, useState } from "react";
 
 import AppBar from "../Components/AppBar";
 import Box from "@material-ui/core/Box";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import ComponentLoader from "../Components/Loaders/ComponentLoader";
 import Container from "@material-ui/core/Container";
 import Controller from "../Components/Controller";
 import Footer from "../Components/Footer";
+import FullPageLoader from "../Components/Loaders/FullPageLoader";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
@@ -18,7 +20,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.default,
     display: "flex",
     flexDirection: "column",
-    minHeight: "100vh",
   },
 }));
 
@@ -54,7 +55,7 @@ const Home = (props) => {
           <Grid container spacing={2}>
             <Grid item md={8} xs={12}>
               <Paper>
-                <Suspense fallback={<CircularProgress></CircularProgress>}>
+                <Suspense fallback={<ComponentLoader></ComponentLoader>}>
                   <FilesDropzone
                     files={files}
                     setFiles={setFiles}
@@ -89,10 +90,8 @@ const Home = (props) => {
           </Grid>
         </Box>
       </Container>
-      <Footer></Footer>
-
       {showPdf ? (
-        <Suspense fallback={<CircularProgress></CircularProgress>}>
+        <Suspense fallback={<FullPageLoader></FullPageLoader>}>
           <PDFRender
             open={showPdf}
             setOpen={setShowPdf}
@@ -101,6 +100,7 @@ const Home = (props) => {
           ></PDFRender>
         </Suspense>
       ) : null}
+      <Footer></Footer>
     </>
   );
 };

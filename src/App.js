@@ -70,7 +70,9 @@ function App() {
           horizontal: "center",
         }}
       >
-        <Home changeTheme={changeTheme} isDark={darkMode} />
+        <div style={{ height: "100vh" }}>
+          <Home changeTheme={changeTheme} isDark={darkMode} />
+        </div>
         <CssBaseline />
       </SnackbarProvider>
     </ThemeProvider>

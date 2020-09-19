@@ -8,6 +8,9 @@ import Modal from "./Modal";
 import React from "react";
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    maxheight: "100vh",
+  },
   heading: {
     color: "#fbfbfb",
     padding: "10px",
@@ -32,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
 const ImageCompare = React.memo(({ original, compressed, ...rest }) => {
   const classes = useStyles();
   return (
-    <Modal {...rest} title={"Compare Images"}>
+    <Modal {...rest} title={"Compare Images"} className={classes.root}>
       <Grid container spacing={2} className={classes.showTitle}>
         <Grid item xs={6}>
           <Typography variant="h6" className={classes.heading}>

@@ -91,7 +91,7 @@ export default function CustomizedDialogs({ open, setOpen }) {
       </DialogTitle>
       <DialogContent dividers>
         <Typography gutterBottom>
-          The image compressor app can help you compress or resize images
+          The image compressor app can help you compress, crop or resize images
           offline🔥 and download them as individuals images or as a ZIP. You can
           also create a PDF on the way. You can check advance settings to
           compress and resize images as you like.
@@ -122,7 +122,12 @@ export default function CustomizedDialogs({ open, setOpen }) {
             </IconButton>
           </Grid>
           <Grid item className={classes.supportBtn} md={6} xs={12}>
-            <Button autoFocus onClick={handleClose} color="primary">
+            <Button
+              autoFocus
+              onClick={handleClose}
+              color="primary"
+              id="container"
+            >
               🥂 Want to Support Me?
             </Button>
           </Grid>

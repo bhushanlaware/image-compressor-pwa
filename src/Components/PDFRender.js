@@ -32,7 +32,7 @@ const PDFRender = React.memo(({ images, fill, ...rest }) => {
   const MyDocument = ({ images }) => (
     <Document>
       {images.map((img) => (
-        <Page size="A4" style={styles.page}>
+        <Page size="A4" style={styles.page} key={img}>
           <Image src={URL.createObjectURL(img)}></Image>
         </Page>
       ))}

@@ -3,6 +3,7 @@ import "react-perfect-scrollbar/dist/css/styles.css";
 import {
   Box,
   Button,
+  ButtonGroup,
   Grid,
   IconButton,
   List,
@@ -13,23 +14,27 @@ import {
   Typography,
   makeStyles,
 } from "@material-ui/core";
-import React, { useEffect, useState } from "react";
+import React, { Suspense, lazy, useEffect, useState } from "react";
 
+import CropIcon from "@material-ui/icons/Crop";
 import DeleteIcon from "@material-ui/icons/Delete";
 import DownArrowIcon from "@material-ui/icons/ArrowDownwardRounded";
-import ImageCompare from "./ImageCompare";
-import LoadingScreen from "./LoadingScreen";
+import FullPageLoader from "./Loaders/FullPageLoader";
+import LoadingScreen from "./Loaders/LinearLoader";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import PropTypes from "prop-types";
 import SaveIcon from "@material-ui/icons/Save";
 import UpArrowIcon from "@material-ui/icons/ArrowUpwardRounded";
 import bytesToSize from "../utils/bytesToSize";
 import clsx from "clsx";
+import { file } from "jszip";
 import fileCompressor from "../utils/fileCompressor";
 import { saveAs } from "file-saver";
 import { useDropzone } from "react-dropzone";
 import { useSnackbar } from "notistack";
 
+const ImageCompare = lazy(() => import("./ImageCompare"));
+const CropImage = lazy(() => import("./CropImage"));
 const useStyles = makeStyles((theme) => ({
   fileDesc: {
     [theme.breakpoints.down("sm")]: {
@@ -106,6 +111,8 @@ function FilesDropzone({
   const [showCompare, setShowCompare] = useState(false);
   const [compareOriginal, setCompareOriginal] = useState(null);
   const [compareCompressed, setcompareCompressed] = useState(null);
+  const [cropImageFileIndex, setCropImageFile] = useState(null);
+  const [showCrop, setShowCrop] = useState(false);
   const handleDrop = (acceptedFiles, rejectedFiles) => {
     setLoading(true);
     if (rejectedFiles.length > 0) {
@@ -153,6 +160,41 @@ function FilesDropzone({
       setLoading(false);
     });
   };
+  const resizeImageOfIndex = (croppedImage, i) => {
+    // setLoading(true);
+    // resizeFiles(originalFiles, size, quality).then((newFiles) => {
+    //   setFiles(newFiles);
+    //   setLoading(false);
+    // });]
+
+    fileCompressor([croppedImage], size, quality).then((newFiles) => {
+      const files1 = [...files];
+      files1[i] = newFiles[0];
+      setFiles(files1);
+      setLoading(false);
+    });
+  };
+  const handleCrop = (i) => {
+    setCropImageFile(i);
+    setShowCrop(true);
+  };
+  const handleCropImage = (croppedImage) => {
+    setShowCrop(false);
+    //also upload in database
+    if (!croppedImage) return;
+    try {
+      const newFiles = [...originalFiles];
+      newFiles[cropImageFileIndex] = croppedImage;
+      setOriginalFiles(newFiles);
+      resizeImageOfIndex(croppedImage, cropImageFileIndex);
+      setShowCrop(false);
+      enqueueSnackbar("Image Cropped Successfully", { variant: "success" });
+    } catch (error) {
+      enqueueSnackbar("Something gone wrong", { variant: "error" });
+      console.log(error);
+    }
+  };
+
   const handleCompare = (i) => {
     setCompareOriginal(originalFiles[i]);
     setcompareCompressed(files[i]);
@@ -283,16 +325,28 @@ function FilesDropzone({
                               </Typography> */}
                               </Grid>
                               <Grid item>
-                                <Button
-                                  color="primary"
-                                  size="small"
+                                <ButtonGroup
+                                  orientation="vertical"
                                   variant="outlined"
-                                  onClick={() => {
-                                    handleCompare(i);
-                                  }}
+                                  color="primary"
                                 >
-                                  Compare
-                                </Button>
+                                  <Button
+                                    size="small"
+                                    onClick={() => {
+                                      handleCompare(i);
+                                    }}
+                                  >
+                                    Compare
+                                  </Button>
+                                  <Button
+                                    size="small"
+                                    onClick={() => {
+                                      handleCrop(i);
+                                    }}
+                                  >
+                                    Crop
+                                  </Button>
+                                </ButtonGroup>
                               </Grid>
                               <Grid item>
                                 <img
@@ -361,7 +415,14 @@ function FilesDropzone({
                                       </IconButton>
                                     </Tooltip>
                                   ) : null}
-
+                                  {/* <Tooltip title="Crop Image">
+                                    <IconButton
+                                      edge="end"
+                                      onClick={() => handleCrop(i)}
+                                    >
+                                      <CropIcon />
+                                    </IconButton>
+                                  </Tooltip> */}
                                   <Tooltip title="Download">
                                     <IconButton
                                       edge="end"
@@ -404,12 +465,24 @@ function FilesDropzone({
       </div>
       <div>
         {showCompare ? (
-          <ImageCompare
-            original={compareOriginal}
-            compressed={compareCompressed}
-            open={showCompare}
-            setOpen={setShowCompare}
-          ></ImageCompare>
+          <Suspense fallback={<FullPageLoader></FullPageLoader>}>
+            <ImageCompare
+              original={compareOriginal}
+              compressed={compareCompressed}
+              open={showCompare}
+              setOpen={setShowCompare}
+            ></ImageCompare>
+          </Suspense>
+        ) : null}
+        {showCrop ? (
+          <Suspense fallback={<FullPageLoader></FullPageLoader>}>
+            <CropImage
+              file={originalFiles[cropImageFileIndex]}
+              onSubmit={handleCropImage}
+              open={showCrop}
+              setOpen={setShowCrop}
+            ></CropImage>
+          </Suspense>
         ) : null}
       </div>
     </>
