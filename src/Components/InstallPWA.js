@@ -1,6 +1,6 @@
+import { IconButton, Tooltip } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 
-import { Button } from "@material-ui/core";
 import InstallIcon from "@material-ui/icons/GetApp";
 
 const InstallPWA = () => {
@@ -11,6 +11,7 @@ const InstallPWA = () => {
     const handler = (e) => {
       e.preventDefault();
       setSupportsPWA(true);
+      console.log(e);
       setPromptInstall(e);
     };
     window.addEventListener("beforeinstallprompt", handler);
@@ -29,14 +30,14 @@ const InstallPWA = () => {
     return null;
   }
   return (
-    <Button
-      title="Install app"
-      style={{ color: "white", borderColor: "white" }}
-      startIcon={<InstallIcon onClick={onClick} />}
-      variant="outlined"
-    >
-      Install
-    </Button>
+    <Tooltip title="Install App">
+      <IconButton
+        style={{ color: "white", borderColor: "white" }}
+        onClick={onClick}
+      >
+        <InstallIcon />
+      </IconButton>
+    </Tooltip>
   );
 };
 

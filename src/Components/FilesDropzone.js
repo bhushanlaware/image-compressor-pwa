@@ -322,6 +322,12 @@ function FilesDropzone({
                                     file.size && originalFiles[i].size
                                       ? "Resized to " +
                                         bytesToSize(file.size) +
+                                        // "<i style='color:green'>" +
+                                        // (1 -
+                                        //   originalFiles[i].size /
+                                        //     originalFiles[i].size) *
+                                        //   100 +
+                                        // "Smaller </i>" +
                                         " from " +
                                         bytesToSize(originalFiles[i].size)
                                       : null
