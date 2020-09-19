@@ -7,7 +7,7 @@ import {
   Page,
   StyleSheet,
 } from "@react-pdf/renderer";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 
 import Modal from "./Modal";
 

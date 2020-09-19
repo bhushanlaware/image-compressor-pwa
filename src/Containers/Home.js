@@ -1,18 +1,18 @@
-import React, { useState } from "react";
+import React, { Suspense, lazy, useState } from "react";
 
 import AppBar from "../Components/AppBar";
 import Box from "@material-ui/core/Box";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import Container from "@material-ui/core/Container";
 import Controller from "../Components/Controller";
-import FilesDropzone from "../Components/FilesDropzone";
 import Footer from "../Components/Footer";
 import Grid from "@material-ui/core/Grid";
-import InstallPWA from "../Components/InstallPWA";
-import PDFRender from "../Components/PDFRender";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 import zip from "../utils/zip";
 
+const FilesDropzone = lazy(() => import("../Components/FilesDropzone"));
+const PDFRender = lazy(() => import("../Components/PDFRender"));
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.default,
@@ -54,16 +54,18 @@ const Home = (props) => {
           <Grid container spacing={2}>
             <Grid item md={8} xs={12}>
               <Paper>
-                <FilesDropzone
-                  files={files}
-                  setFiles={setFiles}
-                  originalFiles={originalFiles}
-                  setOriginalFiles={setOriginalFiles}
-                  loading={loading}
-                  setLoading={setLoading}
-                  size={size}
-                  quality={quality}
-                />
+                <Suspense fallback={<CircularProgress></CircularProgress>}>
+                  <FilesDropzone
+                    files={files}
+                    setFiles={setFiles}
+                    originalFiles={originalFiles}
+                    setOriginalFiles={setOriginalFiles}
+                    loading={loading}
+                    setLoading={setLoading}
+                    size={size}
+                    quality={quality}
+                  />
+                </Suspense>
               </Paper>
             </Grid>
             <Grid item md={4} xs={12}>
@@ -90,12 +92,14 @@ const Home = (props) => {
       <Footer></Footer>
 
       {showPdf ? (
-        <PDFRender
-          open={showPdf}
-          setOpen={setShowPdf}
-          images={files}
-          fill={pdfFill}
-        ></PDFRender>
+        <Suspense fallback={<CircularProgress></CircularProgress>}>
+          <PDFRender
+            open={showPdf}
+            setOpen={setShowPdf}
+            images={files}
+            fill={pdfFill}
+          ></PDFRender>
+        </Suspense>
       ) : null}
     </>
   );

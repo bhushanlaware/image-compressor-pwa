@@ -1,5 +1,4 @@
 import { Button, Grid } from "@material-ui/core";
-import React, { useState } from "react";
 
 import Accordion from "@material-ui/core/Accordion";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
@@ -9,6 +8,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import Divider from "@material-ui/core/Divider";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import PDFIcon from "@material-ui/icons/PictureAsPdf";
+import React from "react";
 import SaveIcon from "@material-ui/icons/Save";
 import Slider from "@material-ui/core/Slider";
 import ToggleButton from "@material-ui/lab/ToggleButton";

@@ -1,9 +1,10 @@
 import AppBar from "@material-ui/core/AppBar";
 import DarkIcon from "@material-ui/icons/Brightness2";
+import DialogModal from "./DialogModal";
 import IconButton from "@material-ui/core/IconButton";
+import InfoIcon from "@material-ui/icons/Info";
 import InstallPWA from "./InstallPWA";
 import LightIcon from "@material-ui/icons/WbSunny";
-import MenuIcon from "@material-ui/icons/Menu";
 import React from "react";
 import Toolbar from "@material-ui/core/Toolbar";
 import { Tooltip } from "@material-ui/core";
@@ -28,7 +29,11 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ButtonAppBar(props) {
   const classes = useStyles();
+  const [openInfo, setOpenInfo] = React.useState(false);
 
+  const handleClickOpen = () => {
+    setOpenInfo(true);
+  };
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -53,15 +58,22 @@ export default function ButtonAppBar(props) {
           <Tooltip title="Change Theme">
             <IconButton color="inherit" onClick={props.changeTheme}>
               {!props.isDark ? (
-                <DarkIcon></DarkIcon>
+                <DarkIcon style={{ color: "yellow" }}></DarkIcon>
               ) : (
                 <LightIcon style={{ color: "yellow" }}></LightIcon>
               )}
             </IconButton>
           </Tooltip>
+
           <InstallPWA></InstallPWA>
+          <Tooltip title="About">
+            <IconButton color="inherit" onClick={handleClickOpen}>
+              <InfoIcon />
+            </IconButton>
+          </Tooltip>
         </Toolbar>
       </AppBar>
+      <DialogModal open={openInfo} setOpen={setOpenInfo}></DialogModal>
     </div>
   );
 }
