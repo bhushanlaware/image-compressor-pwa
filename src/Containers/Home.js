@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.default,
     display: "flex",
     flexDirection: "column",
+    minHeight: "100vh",
   },
 }));
 
@@ -46,61 +47,59 @@ const Home = (props) => {
   return (
     <>
       <AppBar title={"Image Compressor"} {...props}></AppBar>
-      <Container
-        maxWidth="lg"
-        style={{ marginTop: "10px" }}
-        className={classes.root}
-      >
-        <Box mt={2} pb={2}>
-          <Grid container spacing={2}>
-            <Grid item md={8} xs={12}>
-              <Paper>
-                <Suspense fallback={<ComponentLoader></ComponentLoader>}>
-                  <FilesDropzone
-                    files={files}
-                    setFiles={setFiles}
-                    originalFiles={originalFiles}
-                    setOriginalFiles={setOriginalFiles}
-                    loading={loading}
-                    setLoading={setLoading}
-                    size={size}
-                    quality={quality}
-                  />
-                </Suspense>
-              </Paper>
+      <div className={classes.root}>
+        <Container maxWidth="lg" style={{ marginTop: "10px" }}>
+          <Box mt={2} pb={2}>
+            <Grid container spacing={2}>
+              <Grid item md={8} xs={12}>
+                <Paper>
+                  <Suspense fallback={<ComponentLoader></ComponentLoader>}>
+                    <FilesDropzone
+                      files={files}
+                      setFiles={setFiles}
+                      originalFiles={originalFiles}
+                      setOriginalFiles={setOriginalFiles}
+                      loading={loading}
+                      setLoading={setLoading}
+                      size={size}
+                      quality={quality}
+                    />
+                  </Suspense>
+                </Paper>
+              </Grid>
+              <Grid item md={4} xs={12}>
+                <Paper>
+                  <Box p={4}>
+                    <Controller
+                      completed={!loading && files.length > 0}
+                      saveZip={saveZip}
+                      isSaving={isSaving}
+                      size={size}
+                      quality={quality}
+                      pdfFill={pdfFill}
+                      setQuality={setQuality}
+                      setSize={setSize}
+                      showPdf={setShowPdf}
+                      setPdfFill={setPdfFill}
+                    ></Controller>
+                  </Box>
+                </Paper>
+              </Grid>
             </Grid>
-            <Grid item md={4} xs={12}>
-              <Paper>
-                <Box p={4}>
-                  <Controller
-                    completed={!loading && files.length > 0}
-                    saveZip={saveZip}
-                    isSaving={isSaving}
-                    size={size}
-                    quality={quality}
-                    pdfFill={pdfFill}
-                    setQuality={setQuality}
-                    setSize={setSize}
-                    showPdf={setShowPdf}
-                    setPdfFill={setPdfFill}
-                  ></Controller>
-                </Box>
-              </Paper>
-            </Grid>
-          </Grid>
-        </Box>
-      </Container>
-      {showPdf ? (
-        <Suspense fallback={<FullPageLoader></FullPageLoader>}>
-          <PDFRender
-            open={showPdf}
-            setOpen={setShowPdf}
-            images={files}
-            fill={pdfFill}
-          ></PDFRender>
-        </Suspense>
-      ) : null}
-      <Footer></Footer>
+          </Box>
+        </Container>
+        {showPdf ? (
+          <Suspense fallback={<FullPageLoader></FullPageLoader>}>
+            <PDFRender
+              open={showPdf}
+              setOpen={setShowPdf}
+              images={files}
+              fill={pdfFill}
+            ></PDFRender>
+          </Suspense>
+        ) : null}
+        <Footer></Footer>
+      </div>
     </>
   );
 };
