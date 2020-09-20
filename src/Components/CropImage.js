@@ -13,6 +13,8 @@ class CropImage extends PureComponent {
       unit: "%",
       width: 50,
       height: 50,
+      x: 25,
+      y: 25,
     },
   };
   componentDidMount = () => {
@@ -53,11 +55,19 @@ class CropImage extends PureComponent {
   }
 
   getCroppedImg(image, crop) {
+    console.log(image);
+    debugger;
     const canvas = document.createElement("canvas");
-    const scaleX = image.naturalWidth / image.width;
-    const scaleY = image.naturalHeight / image.height;
-    canvas.width = crop.width;
-    canvas.height = crop.height;
+    let scaleX = 1;
+    let scaleY = 1;
+
+    // const clientHeight = document.documentElement.clientHeight * 0.99;
+
+    scaleX = image.naturalHeight / image.offsetHeight;
+    scaleY = image.naturalWidth / image.offsetWidth;
+
+    canvas.width = crop.width * 2;
+    canvas.height = crop.height * 2;
     const ctx = canvas.getContext("2d");
 
     ctx.drawImage(
@@ -68,8 +78,8 @@ class CropImage extends PureComponent {
       crop.height * scaleY,
       0,
       0,
-      crop.width,
-      crop.height
+      crop.width * 2,
+      crop.height * 2
     );
     canvas.toBlob((blob) => {
       blob.name = this.props.file.name;
@@ -117,6 +127,7 @@ class CropImage extends PureComponent {
             <ReactCrop
               src={src}
               crop={crop}
+              ruleOfThirds
               onImageLoaded={this.onImageLoaded}
               onComplete={this.onCropComplete}
               onChange={this.onCropChange}

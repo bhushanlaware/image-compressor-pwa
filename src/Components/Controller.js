@@ -73,7 +73,7 @@ export default function DiscreteSlider(props) {
                   aria-labelledby="discrete-slider"
                   step={32}
                   min={32}
-                  max={4096}
+                  max={2048}
                   onChange={(e, v) => {
                     setSize(v);
                   }}

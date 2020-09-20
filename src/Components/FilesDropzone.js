@@ -484,6 +484,7 @@ const FilesDropzone = React.memo(
           {showCrop ? (
             <Suspense fallback={<FullPageLoader></FullPageLoader>}>
               <CropImage
+                ruleOfThirds
                 file={originalFiles[cropImageFileIndex]}
                 onSubmit={handleCropImage}
                 open={showCrop}
