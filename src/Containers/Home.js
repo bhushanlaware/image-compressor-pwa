@@ -31,7 +31,7 @@ const Home = (props) => {
   const [loading, setLoading] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [quality, setQuality] = useState(10);
-  const [size, setSize] = useState(1024);
+  const [size, setSize] = useState(4096);
   const [showPdf, setShowPdf] = useState(false);
   const [pdfFill, setPdfFill] = useState("colomn");
   const saveZip = () => {

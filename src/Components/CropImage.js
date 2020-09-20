@@ -11,7 +11,8 @@ class CropImage extends PureComponent {
     src: null,
     crop: {
       unit: "%",
-      width: 100,
+      width: 50,
+      height: 50,
     },
   };
   componentDidMount = () => {
@@ -95,7 +96,9 @@ class CropImage extends PureComponent {
     this.props.setOpen(false);
   };
   SaveCrop = () => {
-    this.props.onSubmit && this.props.onSubmit(this.state.blob);
+    const croppedImg = this.state.blob;
+    croppedImg.blobURL = URL.createObjectURL(croppedImg);
+    this.props.onSubmit && this.props.onSubmit(croppedImg);
   };
   render() {
     const { crop, src } = this.state;

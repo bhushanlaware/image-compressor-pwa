@@ -10,6 +10,7 @@ export default async (files, size, quality) => {
   };
   for (const imageFile of files) {
     const comImg = await imageCompression(imageFile, options);
+    comImg.blobURL = URL.createObjectURL(comImg);
     compressed.push(comImg);
   }
   return compressed;
