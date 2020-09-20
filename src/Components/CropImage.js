@@ -65,9 +65,14 @@ class CropImage extends PureComponent {
 
     scaleX = image.naturalHeight / image.offsetHeight;
     scaleY = image.naturalWidth / image.offsetWidth;
+    if (scaleX > 1) {
+      canvas.width = crop.width * 1.5;
+      canvas.height = crop.height * 1.5;
+    } else {
+      canvas.width = crop.width;
+      canvas.height = crop.height;
+    }
 
-    canvas.width = crop.width * 2;
-    canvas.height = crop.height * 2;
     const ctx = canvas.getContext("2d");
 
     ctx.drawImage(
@@ -78,8 +83,8 @@ class CropImage extends PureComponent {
       crop.height * scaleY,
       0,
       0,
-      crop.width * 2,
-      crop.height * 2
+      canvas.width,
+      canvas.height
     );
     canvas.toBlob((blob) => {
       blob.name = this.props.file.name;
