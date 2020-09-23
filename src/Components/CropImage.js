@@ -66,8 +66,8 @@ class CropImage extends PureComponent {
     scaleX = image.naturalHeight / image.offsetHeight;
     scaleY = image.naturalWidth / image.offsetWidth;
     if (scaleX > 1) {
-      canvas.width = crop.width * 1.5;
-      canvas.height = crop.height * 1.5;
+      canvas.width = crop.width * 1.8;
+      canvas.height = crop.height * 1.8;
     } else {
       canvas.width = crop.width;
       canvas.height = crop.height;

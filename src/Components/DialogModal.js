@@ -87,25 +87,45 @@ export default function CustomizedDialogs({ open, setOpen }) {
       open={open}
     >
       <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-        🚀 Image Compressor
+        <h1 style={{ fontSize: "1.2rem" }}>Offline Image Compressor </h1>
       </DialogTitle>
       <DialogContent dividers>
         <Typography gutterBottom>
-          The image compressor app can help you compress, crop or resize images
-          offline🔥 and download them as individuals images or as a ZIP. You can
-          also create a PDF on the way. You can check advance settings to
-          compress and resize images as you like.
+          <h2 style={{ fontSize: "1rem", fontWeight: "400" }}>
+            The image compressor app can help you compress, crop or resize
+            images in bulk and offline
+            <span role="img" aria-label="reduce image size in kb">
+              🔥
+            </span>
+            and download them as individuals images or as a ZIP. You can also
+            create a PDF on the way. You can check advance settings to compress
+            and resize images as you like.
+          </h2>
         </Typography>
         <Typography gutterBottom>
-          The best thing about this app is that never uploads images to the
-          server. It is a progressive web app that will compress images in the
-          browser using javascript. Hence it is fast ⚡, reliable, and secure.
-          It works offline and can be installed in android, mac, iOS, Windows,
-          or any platform that supports modern browsers 💪.
+          <h2 style={{ fontSize: "1rem", fontWeight: "400" }}>
+            The best thing about this app is that never uploads images to the
+            server. It is a progressive web app that will compress images in the
+            browser using javascript. Hence it is fast
+            <span role="img" aria-label="Bulk photo compression">
+              ⚡
+            </span>
+            , reliable, and secure. It works offline and can be installed in
+            android, mac, iOS, Windows, or any platform that supports modern
+            browsers{" "}
+            <span role="img" aria-label="fast and secure">
+              💪
+            </span>
+            .
+          </h2>
         </Typography>
         <Typography gutterBottom>
           If you like this application you can check the source code at Github
-          and also follow me on Instagram and Linkedin for such amazing apps 💖.
+          and also follow me on Instagram and Linkedin for such amazing apps{" "}
+          <span role="img" aria-label="resize image to 100kb">
+            💖
+          </span>
+          .
         </Typography>
       </DialogContent>
       <DialogActions>
